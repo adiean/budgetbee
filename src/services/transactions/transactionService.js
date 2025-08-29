@@ -69,24 +69,24 @@ export const deleteTransactionAPI = async (id) => {
   return response.data;
 };
 
-export const listTransactionsAPI = async (filters) => {
-  const token = getUserFromStorage();
-
-  const params = {};
-
-  // Only send filters if they exist
-  if (filters.startDate) params.startDate = filters.startDate;
-  if (filters.endDate) params.endDate = filters.endDate;
-  if (filters.type) params.type = filters.type;
-  if (filters.category) params.category = filters.category;
-
-  const response = await axios.get(`${BASE_URL}/transactions`, {
+//! List Transactions API (Fixed)
+export const listTransactionsAPI = async ({
+  category,
+  startDate,
+  endDate,
+  type,
+}) => {
+  const response = await axios.get(`${BASE_URL}/transactions/lists`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    params, // ✅ sends only valid filters
+    // Pass filters as query parameters
+    params: {
+      startDate,
+      endDate,
+      type,
+      category,
+    },
   });
-
   return response.data;
 };
-
