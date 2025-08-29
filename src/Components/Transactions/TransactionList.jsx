@@ -56,7 +56,7 @@ const TransactionList = ({ filters, setFilters }) => {
               <input
                 type="date"
                 name="startDate"
-                value={filters.startDate}
+                value={filters.startDate || ""}
                 onChange={handleFilterChange}
                 className="p-2 rounded-lg border border-yellow-400 bg-yellow-100 focus:border-yellow-500 focus:ring-yellow-500"
               />
@@ -68,7 +68,7 @@ const TransactionList = ({ filters, setFilters }) => {
               <input
                 type="date"
                 name="endDate"
-                value={filters.endDate}
+                value={filters.endDate || ""}
                 onChange={handleFilterChange}
                 className="p-2 rounded-lg border border-yellow-400 bg-yellow-100 focus:border-yellow-500 focus:ring-yellow-500"
               />
@@ -214,3 +214,4 @@ const TransactionList = ({ filters, setFilters }) => {
 };
 
 export default TransactionList;
+//fix
